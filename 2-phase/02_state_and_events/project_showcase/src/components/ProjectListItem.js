@@ -1,21 +1,18 @@
 import { useState } from "react"
 
 const ProjectListItem = (props) => {
-	const [clapCount, setClapCount] = useState(0)
-	// const clapCount = 0
 
-	const handleClaps = (e) => {
-		// when this button is clicked, increase the clapCount by 1
-		// setClapCount(clapCount + 1)
-		setClapCount((prevState) => prevState + 1)
-	}
+const [clapCount, setClapCount] = useState(0)
+
+const handleClaps = (e) => {
+	setClapCount((clapCount) => (clapCount + 1))
+}
 
 	return (
 		<li className="card">
 			<figure className="image">
 				<img src={props.project.image} alt={props.project.name} />
-				{/* <button className="claps" onClick={() => setClapCount(clapCount + 1)}> */}
-				<button className="claps" onClick={handleClaps}>
+				<button onClick={handleClaps} className="claps">
 					👏{clapCount}
 				</button>
 			</figure>
@@ -38,3 +35,10 @@ const ProjectListItem = (props) => {
 }
 
 export default ProjectListItem
+
+
+/* Incrementing the Claps Button Amount
+	- Set state variable and setter function (i.e. line 5)
+	- Create a function that will use the setter function to increment the state variable (i.e line 7)
+	- Add an onClick event on the target button (i.e. line 15) and call on the function targeting the setter function
+*/
