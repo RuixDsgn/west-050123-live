@@ -34,24 +34,31 @@ import { useState } from "react"
 
 */
 
-const ProjectForm = ({ setProjects }) => {
-	const [name, setName] = useState("")
-	const [about, setAbout] = useState("")
-	const [phaseInput, setPhaseInput] = useState(null)
-	const [link, setLink] = useState("")
-	const [image, setImage] = useState("")
+const ProjectForm1 = ({ setProjects }) => {
+	const [formData, setFormData] = useState({
+		name: "",
+		about: "",
+		phase: "",
+		link: "",
+		image: "",
+	})
 
-	const handleName = (e) => {
-		const inputValue = e.target.value
-		setName(inputValue)
+	const handleNameChange = (e) => {
+		// setFormData({ name: e.target.value, about: formData.about, phase: formData.phase, link: formData.link })
+		setFormData({ ...formData, name: e.target.value })
+	}
+
+	const handleChangeAll = (e) => {
+		setFormData((prevFormData) => {
+			return { ...prevFormData, [e.target.name]: e.target.value }
+		})
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		const newProjObj = { name, about, phase: phaseInput, link, image }
-
+		console.log(formData)
 		// setProjects([newProjObj, ...projects])
-		setProjects(prevState => [newProjObj, ...prevState])
+		setProjects((prevState) => [formData, ...prevState])
 	}
 
 	return (
@@ -60,21 +67,17 @@ const ProjectForm = ({ setProjects }) => {
 				<h3>Add New Project</h3>
 
 				<label htmlFor="name">Name</label>
-				<input type="text" id="name" name="name" onChange={handleName} />
+				<input type="text" id="name" name="name" onChange={handleNameChange} />
 
 				<label htmlFor="about">About</label>
 				<textarea
 					id="about"
 					name="about"
-					onChange={(e) => setAbout(e.target.value)}
+					onChange={(e) => setFormData({ ...formData, about: e.target.value })}
 				/>
 
 				<label htmlFor="phase">Phase</label>
-				<select
-					name="phase"
-					id="phase"
-					onChange={(e) => setPhaseInput(e.target.value)}
-				>
+				<select name="phase" id="phase" onChange={handleChangeAll}>
 					<option value={""}>Select One</option>
 					<option value="1">Phase 1</option>
 					<option value="2">Phase 2</option>
@@ -84,20 +87,10 @@ const ProjectForm = ({ setProjects }) => {
 				</select>
 
 				<label htmlFor="link">Project Homepage</label>
-				<input
-					type="text"
-					id="link"
-					name="link"
-					onChange={(e) => setLink(e.target.value)}
-				/>
+				<input type="text" id="link" name="link" onChange={handleChangeAll} />
 
 				<label htmlFor="image">Screenshot</label>
-				<input
-					type="text"
-					id="image"
-					name="image"
-					onChange={(e) => setImage(e.target.value)}
-				/>
+				<input type="text" id="image" name="image" onChange={handleChangeAll} />
 
 				<button type="submit">Add Project</button>
 			</form>
@@ -105,4 +98,4 @@ const ProjectForm = ({ setProjects }) => {
 	)
 }
 
-export default ProjectForm
+export default ProjectForm1

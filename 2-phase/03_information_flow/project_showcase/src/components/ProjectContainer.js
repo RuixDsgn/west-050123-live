@@ -7,27 +7,17 @@ const ProjectContainer = () => {
 	const [projects, setProjects] = useState([])
 	const [searchQuery, setSearchQuery] = useState("")
 	const [phase, setPhase] = useState(0)
+	
 
 	const handleClick = () => {
-		fetch("http://localhost:4000/projects")
+		fetch("http://localhost:3000/projects")
 			.then((res) => res.json())
 			.then((projects) => setProjects(projects))
 	}
 
-	const phaseResultsFunc = () => {
-		if (!!phase) {
-			return projects.filter((project) => {
-				return project.phase === phase
-			})
-		} else {
-			return projects
-		}
-	}
-	const phaseResults = !!phase
-		? projects.filter((project) => {
-				return project.phase === phase
-		  })
-		: projects
+	const phaseResults = !!phase ? projects.filter(project => {
+		return project.phase === phase
+	}) : projects
 
 	const searchResults = phaseResults.filter((project) => {
 		return project.name.toLowerCase().includes(searchQuery.toLowerCase())

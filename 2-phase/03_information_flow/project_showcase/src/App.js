@@ -26,9 +26,9 @@ const App = () => {
 	// const [projects, setProjects] = useState([])
 	const [isDarkMode, setIsDarkMode] = useState(true)
 	// const [searchQuery, setSearchQuery] = useState("")
-
+	
 	// const handleClick = () => {
-	// 	fetch("http://localhost:4000/projects")
+	// 	fetch("http://localhost:3000/projects")
 	// 		.then((res) => res.json())
 	// 		.then((projects) => setProjects(projects))
 	// }
@@ -42,15 +42,8 @@ const App = () => {
 	return (
 		<div className={dark}>
 			<Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-			{/* <ProjectForm /> */}
-			{/* <button onClick={handleClick}>Load Projects</button> */}
-      <ProjectContainer />
-			{/* <section>
-				<h2>Projects</h2>
-				<PhaseFilters />
-				<SearchInput setSearchQuery={setSearchQuery} />
-				<ProjectList projects={searchResults} />
-			</section> */}
+			{/* <ProjectForm />  */}
+			<ProjectContainer />
 		</div>
 	)
 }

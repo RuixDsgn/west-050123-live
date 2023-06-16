@@ -8,13 +8,13 @@ const ProjectList = ({ projects }) => {
 	// 	return project.name.toLowerCase().includes(searchQuery.toLowerCase())
 	// })
 
-  // const handleOnChange = (e) => setSearchQuery(e.target.value)
 	const projectListItems = projects.map((project) => (
 		<ProjectListItem key={project.id} {...project} />
 	))
 
+  	// const handleOnChange = (e) => setSearchQuery(e.target.value)
 
-	return <ul className="cards">{projectListItems}</ul>
+	return (<ul className="cards">{projectListItems}</ul>)
 }
 
 export default ProjectList

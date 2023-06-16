@@ -1,5 +1,4 @@
-const Header = ({isDarkMode, setIsDarkMode}) => {
-	// const [isDarkMode, setIsDarkMode] = useState(true)
+const Header = ({ isDarkMode, setIsDarkMode }) => {
 
 	const handleClick = () => setIsDarkMode(!isDarkMode)
 
