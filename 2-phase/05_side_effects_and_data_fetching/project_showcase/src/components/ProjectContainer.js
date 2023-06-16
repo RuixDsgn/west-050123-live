@@ -3,15 +3,9 @@ import PhaseFilters from "./PhaseFilters"
 import SearchInput from "./SearchInput"
 import ProjectList from "./ProjectList"
 
-const ProjectContainer = ({ projects, setProjects }) => {
+const ProjectContainer = ({ projects }) => {
 	const [searchQuery, setSearchQuery] = useState("")
 	const [phase, setPhase] = useState(0)
-
-	const handleClick = () => {
-		fetch("http://localhost:4000/projects")
-			.then((res) => res.json())
-			.then((projects) => setProjects(projects))
-	}
 
 	const phaseResults = () => {
 		if (!!phase) {
@@ -29,7 +23,7 @@ const ProjectContainer = ({ projects, setProjects }) => {
 
 	return (
 		<section>
-			<button onClick={handleClick}>Load Projects</button>
+			{/* <button onClick={handleClick}>Load Projects</button> */}
 			<h2>Projects</h2>
 			<PhaseFilters setPhase={setPhase} />
 			<SearchInput setSearchQuery={setSearchQuery} />
