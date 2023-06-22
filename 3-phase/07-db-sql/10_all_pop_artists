@@ -1,0 +1,13 @@
+-- Select all the Artists with a Pop Track
+SELECT artists.name, genres.name, tracks.name
+FROM artists
+JOIN albums
+  ON artists.artistId = albums.artistId
+-- At this point we have a NEW table
+JOIN tracks
+  ON albums.albumId = tracks.albumId
+-- At this point we have a NEW NEW table
+JOIN genres
+  ON genres.genreId = tracks.genreId
+
+WHERE artists.artistId = 156;

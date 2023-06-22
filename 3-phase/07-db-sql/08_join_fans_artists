@@ -1,0 +1,18 @@
+-- Creates a new table with data related from both (or more) tables
+-- Join our artists onto the Fans tables
+-- output => Fan data + artist's data related to this fan
+SELECT fans.fanId, fans.name, artists.name 
+FROM fans
+-- the JOIN Defaults to the INNER JOIN
+-- JOIN second table
+  -- ON this relationship
+JOIN artists
+  ON artists.artistId = fans.artistId;
+
+
+-- Main Difference is the Order
+-- SELECT * 
+-- FROM artists
+-- JOIN fans
+--   ON artists.artistId = fans.artistId;
+

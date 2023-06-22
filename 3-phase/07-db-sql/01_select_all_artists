@@ -1,0 +1,5 @@
+-- Get all the artists
+-- SELECT (any amount of columns) FROM (table);
+SELECT * FROM artists;
+-- SELECT artists.name FROM artists;
+-- SELECT artists.artistId FROM artists;

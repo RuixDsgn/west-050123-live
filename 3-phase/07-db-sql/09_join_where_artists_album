@@ -1,0 +1,6 @@
+-- Join the artist with their albums
+SELECT * 
+FROM artists
+JOIN albums
+  ON artists.artistId = albums.artistId
+WHERE artists.artistId is 1;

@@ -1,0 +1,9 @@
+-- Find The Office or id of 156
+-- Selecting from table WHERE some condition
+SELECT * FROM artists
+WHERE name == "The Office";
+-- WHERE artistId is not 156;
+-- like "%thing" => ends with 'thing'
+-- like "thing%" => starts with "thing"
+-- like "%thing%" => contains "thing"
+-- WHERE name like "%The%";

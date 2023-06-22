@@ -1,0 +1,8 @@
+-- change fan name to something else
+-- Change carlas fav artist to 156
+UPDATE fans
+SET artistId = 156
+WHERE name is "Carla";
+-- WHERE fanId is 2;
+
+SELECT * FROM fans;

@@ -1,0 +1,6 @@
+-- Add A new fan of artistId
+-- CREATE ACTION!
+INSERT INTO fans (name, artistId)
+VALUES ("Tymon", 156),
+  ("Carla", 136),
+  ("Layne", 245);
