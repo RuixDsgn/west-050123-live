@@ -73,7 +73,7 @@
 	# `Migrate` from `flask_migrate`
 	# db and `Production` from `models`
 from ipdb import set_trace
-from flask import Flask
+from flask import Flask, request
 from flask_migrate import Migrate
 from models import db, Production
 
@@ -112,14 +112,17 @@ db.init_app(app)
 
 @app.route("/hello")
 def index():
-    return "<h1>Hello World</h1>"
+    return "<h2>Hello World</h2>"
 
 # 13. ✅ Run the server with `flask run` and verify your route in the browser at `http://localhost:5000/`
 
 # 14. ✅ Create a dynamic route
-# `@app.route('/productions/<string:title>')
-#  def production(title):
-#     return f'<h1>{title}</h1>'`
+# in the decorator, define our path-variable with <type:varname>
+# the dynamic route defaults to str
+@app.route('/productions/<string:title>')
+def production(title):
+    print(f'{str(type(title))}')
+    return f'<h1>{title}</h1>'
 
 
 # 15.✅ Update the route to find a `production` by its `title` and send it to our browser
@@ -144,8 +147,18 @@ def index():
     #     )`    
 
 # 16.✅ View the path and host with request context
+@app.route("/context")
+def context():
+    return f'<h1>Path {request.path}, Host: {request.host} </h1>'
 
 # 17.✅ Use the before_request request hook, what this hook does is up to you. You could hit a breakpoint, print something to server console or anything else you can think of.
+@app.before_request
+def runs_before():
+    print("THIS IS RUNNING BEFORE")
+
+# @app.after_request()
+# def runs_after():
+#     print("THIS IS RUNNING AFTER>>>>")
 
 # Note: If you'd like to run the application as a script instead of using `flask run`, uncomment the line below 
 # and run `python app.py`
